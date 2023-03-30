@@ -1,0 +1,16 @@
+Sub OpenFileIfExists()
+    Dim filePath As String
+    filePath = "C:\path\to\your\file.txt"
+    
+    Do
+        If Dir(filePath) <> "" Then
+            Shell "notepad.exe " & filePath, vbNormalFocus
+            Do While Len(Dir(filePath)) > 0
+                DoEvents
+            Loop
+            AppActivate "Notepad"
+            SendKeys "%{F4}"
+        End If
+        Application.Wait (Now + TimeValue("0:15:00"))
+    Loop
+End Sub
