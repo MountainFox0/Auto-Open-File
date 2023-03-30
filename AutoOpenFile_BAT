@@ -1,0 +1,6 @@
+@echo off
+:loop
+start "C:\path\to\your\file.txt"
+timeout /t 900 >nul
+taskkill /im notepad.exe /f
+goto loop
